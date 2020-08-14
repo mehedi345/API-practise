@@ -12,6 +12,9 @@
     <ul id="users_containers">
 
     </ul>
+    <ol id="user-email">
+
+    </ol>
     <script>
          const user = {id:245,
           name: "masudur",
@@ -28,9 +31,18 @@
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(json => displayUsers(json))
+            
         const ul = document.getElementById("users_containers");
+        const ol = document.getElementById("user-email");
         function displayUsers(users) {
             const userNames = users.map(user => user.username);
+            const userEmails = users.map(user => user.email);
+            for(let i = 0; i <= userEmails.length; i++){
+                const useremail = userEmails[i];
+                const li = document.createElement("li");
+                li.innerText = useremail;
+                ol.appendChild(li);
+            }
             for (let i = 0; i < userNames.length; i++) {
                 const username = userNames[i];
                 const li = document.createElement("li");
@@ -38,6 +50,8 @@
                 ul.appendChild(li);
             }
         }
+
+        
 
     </script>
 </body>
